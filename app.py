@@ -1,0 +1,27 @@
+import kivy
+from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
+
+class SimpleApp(App):
+    def build(self):
+        # Create a vertical box layout
+        layout = BoxLayout(orientation='vertical', padding=20, spacing=10)
+
+        # Create a button
+        self.my_button = Button(text='Press Me!', font_size=40)
+        self.my_button.bind(on_press=self.on_button_press) # Bind the button to a function
+
+        # Add the button to the layout
+        layout.add_widget(self.my_button)
+        return layout
+
+    def on_button_press(self, instance):
+        # Change the button text when pressed
+        if self.my_button.text == 'Press Me!':
+            self.my_button.text = 'Button Pressed!'
+        else:
+            self.my_button.text = 'Press Me!'
+
+if __name__ == '__main__':
+    SimpleApp().run()
